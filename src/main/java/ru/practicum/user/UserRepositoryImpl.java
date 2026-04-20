@@ -10,12 +10,7 @@ public class UserRepositoryImpl implements UserRepository {
     private long dynamicId = 1;
 
     @Override
-    public List<User> findAll() {
-        return new ArrayList<>(users.values());
-    }
-
-    @Override
-    public User save(User user) {
+    public User createUser(User user) {
         if (user == null) {
             throw new IllegalArgumentException("user must not be null");
         }
@@ -24,4 +19,26 @@ public class UserRepositoryImpl implements UserRepository {
 
         return user;
     }
+
+    @Override
+    public Optional<User> getUserById(Long userId) {
+        return Optional.ofNullable(users.get(userId));
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return new ArrayList<>(users.values());
+    }
+
+    @Override
+    public User UpdateUser(User user) {
+        return null;
+    }
+
+    @Override
+    public void deleteUserById(Long id) {
+
+    }
+
+
 }

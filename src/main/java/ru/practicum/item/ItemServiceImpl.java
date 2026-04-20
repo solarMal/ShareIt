@@ -22,7 +22,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Item addNewItem(long userId, Item item) {
-        List<User> users = userRepository.findAll();
+        List<User> users = userRepository.getAllUsers();
 
         User currentUser = users.stream()
                 .filter(user -> user.getId() == userId)
@@ -33,7 +33,7 @@ public class ItemServiceImpl implements ItemService {
             throw new RuntimeException("User not found");
         }
 
-        item.setUserId(userId);
+        item.setOwnerId(userId);
 
         itemRepository.save(item);
         return item;

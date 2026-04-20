@@ -9,19 +9,19 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
+    private final UserMapper userMapper;
+
 
     @Autowired
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserMapper userMapper) {
         this.userService = userService;
-    }
-
-    @GetMapping
-    public List<User> getAllUsers() {
-        return userService.getAllUsers();
+        this.userMapper = userMapper;
     }
 
     @PostMapping
-    public User saveNewUser(@RequestBody User user) {
-        return userService.saveUser(user);
+    public UserDto createUser(@RequestBody UserDto userDto) {
+        User user = userMapper.toUser(userDto);
+        User created = userService.createUser(user);
+        return userMapper.toUserDto(created);
     }
 }

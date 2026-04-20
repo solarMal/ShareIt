@@ -19,7 +19,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     @Override
     public List<Item> findByUserId(long userId) {
         List<Item> result = items.values().stream()
-                        .filter(item -> item.getUserId() == userId)
+                        .filter(item -> item.getOwnerId() == userId)
                         .collect(Collectors.toList());
         log.info("пользователь с id={} сохранил {} ссылок", userId, result.size());
         return result;
@@ -37,7 +37,7 @@ public class ItemRepositoryImpl implements ItemRepository {
     public void deleteByUserIdAndItemId(long userId, long itemId) {
         Item item = items.get(itemId);
 
-        if (item != null && item.getUserId() == userId) {
+        if (item != null && item.getOwnerId() == userId) {
             items.remove(itemId);
             log.info("пользователь с id={} удалил ссылку с id={}", userId, itemId);
         }
