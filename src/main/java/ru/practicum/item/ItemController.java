@@ -3,7 +3,6 @@ package ru.practicum.item;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +15,7 @@ public class ItemController {
 
     @PostMapping
     public ItemDto add(@RequestHeader("X-Sharer-User-Id") Long userId,
-                    @RequestBody ItemDto itemDto) {
+                       @RequestBody ItemDto itemDto) {
         Item item = itemMapper.toItem(itemDto);
         Item created = itemService.createItem(userId, item);
         return itemMapper.toItemDto(created);
