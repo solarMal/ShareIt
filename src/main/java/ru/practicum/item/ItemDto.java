@@ -6,5 +6,6 @@ import lombok.Data;
 public class ItemDto {
     private Long id;
     private String name;
-    private boolean available;
+    private Boolean available;
+    private String description;
 }
