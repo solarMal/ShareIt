@@ -4,7 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import ru.practicum.errorhandler.exception.ItemNotFoundException;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -86,5 +89,10 @@ public class ItemRepositoryImpl implements ItemRepository {
             items.remove(itemId);
             log.info("пользователь с id={} удалил ссылку с id={}", userId, itemId);
         }
+    }
+
+    @Override
+    public void addGitHub(long id) {
+        System.out.println("1");
     }
 }

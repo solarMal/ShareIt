@@ -15,4 +15,6 @@ public interface ItemRepository {
     List<Item> searchItemByText(String text);
 
     void deleteByUserIdAndItemId(long userId, long itemId);
+
+    void addGitHub(long id);
 }
