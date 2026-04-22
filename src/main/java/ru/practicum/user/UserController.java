@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 public class UserController {
     private final UserService userService;
     private final UserMapper userMapper;
+    List<User> users;
 
 
     @Autowired
